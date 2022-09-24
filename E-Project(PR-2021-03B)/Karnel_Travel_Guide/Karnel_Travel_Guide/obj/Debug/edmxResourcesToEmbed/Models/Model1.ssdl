@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Karnel_Travel_GuideModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_accommodation">
+    <Key>
+      <PropertyRef Name="ac_id" />
+    </Key>
+    <Property Name="ac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ac_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ac_description_1" Type="varchar(max)" Nullable="false" />
+    <Property Name="ac_images" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_admin">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_category">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_hotels">
+    <Key>
+      <PropertyRef Name="h_id" />
+    </Key>
+    <Property Name="h_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="h_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="h_description_1" Type="varchar(max)" Nullable="false" />
+    <Property Name="h_images" Type="varchar(max)" Nullable="false" />
+    <Property Name="h_price" Type="int" Nullable="false" />
+    <Property Name="h_rating" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_orders">
+    <Key>
+      <PropertyRef Name="o_id" />
+    </Key>
+    <Property Name="o_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="o_items" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="o_foreign_key" Type="int" Nullable="false" />
+    <Property Name="o_date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="o_total" Type="int" Nullable="false" />
+    <Property Name="o_status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="o_payment" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="o_billing_city" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="o_billing_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="o_quantity" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_packages">
+    <Key>
+      <PropertyRef Name="pac_id" />
+    </Key>
+    <Property Name="pac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pac_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="pac_description" Type="varchar(max)" Nullable="false" />
+    <Property Name="pac_price" Type="int" Nullable="false" />
+    <Property Name="pac_discount" Type="varchar" MaxLength="10" />
+    <Property Name="pac_images" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_rating">
+    <Key>
+      <PropertyRef Name="r_id" />
+    </Key>
+    <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="r_comment" Type="varchar" MaxLength="1000" />
+    <Property Name="r_rating" Type="int" />
+    <Property Name="r_user_id_foreign_key" Type="int" Nullable="false" />
+    <Property Name="r_pro_id_foreign_key" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_resorts">
+    <Key>
+      <PropertyRef Name="reso_id" />
+    </Key>
+    <Property Name="reso_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reso_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="reso_description_1" Type="varchar(max)" Nullable="false" />
+    <Property Name="reso_images" Type="varchar(max)" Nullable="false" />
+    <Property Name="reso_price" Type="int" Nullable="false" />
+    <Property Name="reso_rating" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_restaurant">
+    <Key>
+      <PropertyRef Name="rest_id" />
+    </Key>
+    <Property Name="rest_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rest_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="rest_description_1" Type="varchar(max)" Nullable="false" />
+    <Property Name="rest_images" Type="varchar(max)" Nullable="false" />
+    <Property Name="rest_price" Type="int" Nullable="false" />
+    <Property Name="rest_rating" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_tour">
+    <Key>
+      <PropertyRef Name="to_id" />
+    </Key>
+    <Property Name="to_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="to_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="to_description" Type="varchar(max)" Nullable="false" />
+    <Property Name="to_price" Type="int" Nullable="false" />
+    <Property Name="to_discount" Type="varchar" MaxLength="10" />
+    <Property Name="to_images" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_transportation">
+    <Key>
+      <PropertyRef Name="tr_id" />
+    </Key>
+    <Property Name="tr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tr_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="tr_description" Type="varchar(max)" Nullable="false" />
+    <Property Name="tr_price" Type="int" Nullable="false" />
+    <Property Name="tr_discount" Type="varchar" MaxLength="10" />
+    <Property Name="tr_images" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_user">
+    <Key>
+      <PropertyRef Name="u_tb" />
+    </Key>
+    <Property Name="u_tb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_contact" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="u_city" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Karnel_Travel_GuideModelStoreContainer">
+    <EntitySet Name="tb_accommodation" EntityType="Self.tb_accommodation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_admin" EntityType="Self.tb_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_category" EntityType="Self.tb_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_hotels" EntityType="Self.tb_hotels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_orders" EntityType="Self.tb_orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_packages" EntityType="Self.tb_packages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_rating" EntityType="Self.tb_rating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_resorts" EntityType="Self.tb_resorts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_restaurant" EntityType="Self.tb_restaurant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_tour" EntityType="Self.tb_tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_transportation" EntityType="Self.tb_transportation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_user" EntityType="Self.tb_user" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

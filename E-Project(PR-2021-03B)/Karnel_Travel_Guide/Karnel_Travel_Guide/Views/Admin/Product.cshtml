@@ -1,0 +1,163 @@
+﻿
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+
+    
+    $(".n").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#popular1").offset().top
+        },
+            'slow');
+    });
+
+    $(".n1").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu1").offset().top
+        },
+            'slow');
+    });
+
+    $(".n2").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu2").offset().top
+        },
+            'slow');
+    });
+
+    $(".n3").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu3").offset().top
+        },
+            'slow');
+    });
+
+    $(".n4").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu4").offset().top
+        },
+            'slow');
+    });
+
+    $(".n5").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu5").offset().top
+        },
+            'slow');
+    });
+
+</script>
+
+
+
+<style>
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+  
+</style>
+
+
+
+
+
+<div class="bs-example">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item n"><a class="active rounded-0 nav-link border-dark text-uppercase text-dark" href="#popular1" data-toggle="tab">Transportation</a></li>
+        <li class="nav-item n1"><a href="#menu1" class="nav-link rounded-0 border-dark text-uppercase  text-dark" data-toggle="tab">Tours</a></li>
+        <li class="nav-item n2"><a href="#menu2" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Restaurant</a></li>
+        <li class="nav-item n3"><a href="#menu3" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Packages</a></li>
+        <li class="nav-item n4"><a href="#menu4" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Resorts</a></li>
+        <li class="nav-item n5"><a href="#menu5" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Hotels</a></li>
+    </ul>
+
+    <div class="tabs-content">
+        <div class="tab-pane fade show in active" id="popular1">
+            <h5 class="text-uppercase p-2 text-center">Add Transportation</h5>
+
+            @{
+                Html.RenderAction("Transportation");
+            }
+
+        </div>
+        <div class="tab-pane fade" id="menu1">
+            <h5 class="text-uppercase p-2 text-center">Add Tour</h5>
+            @{
+                Html.RenderAction("Tour");
+            }
+        </div>
+        <div class="tab-pane fade" id="menu2">
+            <h5 class="text-uppercase p-2 text-center">Add Restaurant</h5>
+            @{
+                Html.RenderAction("Restaurant");
+            }
+        </div>
+        <div class="tab-pane container fade p-0" id="menu3">
+            <h5 class="text-uppercase p-2 text-center">Add Packages</h5>
+            @{
+                Html.RenderAction("Packages");
+            }
+        </div>
+        <div class="tab-pane container fade p-0" id="menu4">
+            <h5 class="text-uppercase p-2 text-center">Add Resorts</h5>
+            @{
+                Html.RenderAction("Resorts");
+            }
+        </div>
+        <div class="tab-pane container fade p-0" id="menu5">
+            <h5 class="text-uppercase p-2 text-center">Add Hotels</h5>
+            @{
+                Html.RenderAction("Hotels");
+            }
+        </div>
+       
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+

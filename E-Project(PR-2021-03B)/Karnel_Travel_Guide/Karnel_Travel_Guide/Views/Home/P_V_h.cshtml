@@ -1,0 +1,241 @@
+﻿@model Karnel_Travel_Guide.Models.tb_hotels
+@using Karnel_Travel_Guide.Models;
+
+@{
+    ViewBag.Title = "P_V_tr";
+}
+@{
+    Karnel_Travel_GuideEntities db = new Karnel_Travel_GuideEntities();
+
+    var rating = (IEnumerable<tb_rating>)TempData["Rating"];
+}
+
+<section class="flat-row main-shop shop-detail style-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @if (Model.h_images != null)
+                {
+                    <img src="@Url.Content(Model.h_images)" width="100%" style="height:500px !important;" />
+                }
+                else
+                {
+                    <img src="https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80" alt="Alternate Text" />
+                }
+
+            </div><!-- /.col-md-6 -->
+
+            <div class="col-md-6">
+                <div class="divider h0"></div>
+                <div class="product-detail">
+                    <div class="inner">
+                        <div class="content-detail">
+                            <h2 class="product-title">@Model.h_name</h2>
+                            <div class="flat-star style-1">
+                                @if (TempData["Percentage"] != null)
+                                {
+                                    double a = Convert.ToDouble(TempData["Percentage"]);
+                                    if (a > 0 && a <= 20)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                    }
+                                    else if (a > 20 && a <= 40)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                    }
+                                    else if (a > 40 && a <= 60)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                    }
+                                    else if (a > 60 || a <= 80)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                    }
+                                    else if (a > 80 && a <= 100)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star "></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                        <i class="fa fa-star text-dark"></i>
+                                    }
+
+                                }
+
+                                
+                            </div>
+
+                            <div class="price margin-top-30">
+                                <ins class="no-padding"><span class="amount">Rs @Model.h_price /-</span></ins>
+                            </div>
+                            <div class="product-quantity margin-top-44">
+                                                                   <div class="add-to-cart text-center">
+                                    @if (Session["u_id"] == null)
+                                    {
+                                        <a>ADD TO CART</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Add" data-id="@Model.h_id">ADD TO CART</a>
+                                    }
+                                </div>
+
+                               
+                            </div>
+                            <ul class="product-infor style-1 margin-top-32">
+                                <li><span>100% cotton</span></li>
+                                <li><span>6 months warranty</span></li>
+                                <li><span>Free Shipping</span></li>
+                                <li><span>High Quality</span></li>
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                </div><!-- /.product-detail -->
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.flat-row -->
+
+<section class="flat-row shop-detail-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="flat-tabs style-1 has-border">
+                    <div class="inner">
+                        <ul class="menu-tab">
+                            <li class="active">Description</li>
+                            <li>Reviews</li>
+                        </ul>
+                        <div class="content-tab">
+                            <div class="content-inner">
+                                <div class="inner max-width-77 padding-top-33 padding-left-7">
+                                    <p>@Model.h_description_1</p>
+                                </div>
+                            </div><!-- /.content-inner -->
+                            <div class="content-inner">
+                                <div class="inner max-width-83 padding-top-33">
+                                    <ol class="review-list">
+                                        @if (rating != null)
+                                        {
+                                            foreach (var item in rating)
+                                            {
+
+                                                <li class="review">
+                                                    <div class="thumb">
+                                                        <img src="images/avatar-1.png" alt="Image">
+                                                    </div>
+                                                    <div class="text-wrap">
+                                                        <div class="review-meta">
+                                                            @{
+                                                                var u = db.tb_user.Where(x => x.u_tb == item.r_user_id_foreign_key).SingleOrDefault();
+                                                                var r = 5 - item.r_rating;
+                                                                var s = Convert.ToInt32(item.r_rating);
+                                                            }
+                                                            <h5 class="name">@u.u_name</h5>
+                                                            <div class="flat-star style-1">
+
+                                                                @for (int j = 0; j < s; j++)
+                                                                {
+                                                                    <i class="fa fa-star"></i>
+                                                                }
+                                                                @for (int i = 0; i < r; i++)
+                                                                {
+                                                                    <i class="fa fa-star text-dark"></i>
+                                                                }
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-text">
+                                                            <p>@item.r_comment</p>
+                                                        </div>
+                                                    </div>
+                                                </li><!--  /.review    -->
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <h6>No Review Found</h6>
+                                        }
+                                    </ol><!-- /.review-list -->
+                                    <div class="comment-respond review-respond" id="respond">
+
+                                    </div><!-- /.comment-respond -->
+                                </div>
+                            </div><!-- /.content-inner -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.shop-detail-content -->
+
+
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script>
+    var flatTabs = function () {
+        $('.flat-tabs').each(function () {
+            $(this).find('.content-tab').children().hide();
+            $(this).find('.content-tab').children().first().show();
+            $(this).find('.menu-tab').children('li').on('click', function () {
+                var liActive = $(this).index();
+                var contentActive = $(this).siblings().removeClass('active').parents('.flat-tabs').find('.content-tab').children().eq(liActive);
+                contentActive.addClass('active').fadeIn("slow");
+                contentActive.siblings().removeClass('active');
+                $(this).addClass('active').parents('.flat-tabs').find('.content-tab').children().eq(liActive).siblings().hide();
+            });
+        });
+    };
+
+    var quantityNumber = function () {
+        $('.quantity-button').on('click', function () {
+            var numberValue = $(this).parent().find('.quantity-number').val();
+
+            if ($(this).text() == "+") {
+                var newVal = parseFloat(numberValue) + 1;
+            } else {
+                if (numberValue > 0) {
+                    var newVal = parseFloat(numberValue) - 1;
+                } else {
+                    newVal = 0;
+                }
+            }
+
+            $(this).parent().find('.quantity-number').val(newVal);
+
+
+        });
+    };
+
+    flatTabs();
+    quantityNumber();
+</script>

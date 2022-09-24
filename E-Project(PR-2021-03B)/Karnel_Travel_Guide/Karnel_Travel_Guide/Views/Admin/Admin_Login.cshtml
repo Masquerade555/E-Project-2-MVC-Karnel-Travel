@@ -1,0 +1,73 @@
+﻿@model Karnel_Travel_Guide.Models.tb_admin
+
+@{
+    ViewBag.Title = "Admin_Login";
+    Layout = null;
+}
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+<div style="background-color: #181828;">
+    <header class="top-header">
+    </header>
+
+    <div id="mainCoantiner">
+        <div class="main-header">
+           
+            <div class="folio-btn">
+                <a class="folio-btn-item ajax" href="/Home/Index" target="_blank"><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span></a>
+            </div>
+        </div>
+
+        <!--dust particel-->
+        <div>
+            <div class="starsec"></div>
+            <div class="starthird"></div>
+            <div class="starfourth"></div>
+            <div class="starfifth"></div>
+        </div>
+        <!--Dust particle end--->
+
+        <div class="container text-center text-dark mt-5">
+            <div class="row">
+                <div class="col-lg-4 d-block mx-auto mt-5">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-md-12">
+                            <div class="card">
+                                <div class="card-body wow-bg" id="formBg">
+                                    <h3 class="colorboard">Login</h3>
+
+                                    <p class="text-muted">Sign In to your account</p>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="input-group mb-3">
+                                            @Html.EditorFor(model => model.ad_email, new { htmlAttributes = new { @class = "form-control textbox-dg", @Placeholder = "Email" } })
+                                            @Html.ValidationMessageFor(model => model.ad_email, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-group mb-4">
+                                            @Html.PasswordFor(model => model.ad_password, new { @class = "form-control textbox-dg", @Placeholder = "Password" })
+                                            @Html.ValidationMessageFor(model => model.ad_password, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-12"> <button type="submit" class="btn btn-primary btn-block logn-btn">Login</button> </div>
+                                            
+                                        </div>
+                                    }
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>

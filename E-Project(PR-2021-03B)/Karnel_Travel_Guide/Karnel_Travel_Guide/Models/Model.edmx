@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Karnel_Travel_GuideModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ad_email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ad_password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_category">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_feedback">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar(max)" />
+          <Property Name="f_comment" Type="varchar(max)" />
+          <Property Name="f_user_id_foreign_key" Type="int" />
+          <Property Name="f_pro_id_foreign_key" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_hotels">
+          <Key>
+            <PropertyRef Name="h_id" />
+          </Key>
+          <Property Name="h_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="h_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="h_description_1" Type="varchar(max)" Nullable="false" />
+          <Property Name="h_images" Type="varchar(max)" Nullable="false" />
+          <Property Name="h_price" Type="int" Nullable="false" />
+          <Property Name="h_rating" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_orders">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="o_items" Type="varchar" MaxLength="200" />
+          <Property Name="o_foreign_key" Type="int" />
+          <Property Name="o_date" Type="datetime2" Precision="7" />
+          <Property Name="o_total" Type="int" />
+          <Property Name="o_status" Type="varchar" MaxLength="50" />
+          <Property Name="o_payment" Type="varchar" MaxLength="50" />
+          <Property Name="o_billing_city" Type="varchar" MaxLength="50" />
+          <Property Name="o_billing_name" Type="varchar" MaxLength="50" />
+          <Property Name="o_quantity" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tb_packages">
+          <Key>
+            <PropertyRef Name="pac_id" />
+          </Key>
+          <Property Name="pac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pac_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="pac_description_1" Type="varchar(max)" Nullable="false" />
+          <Property Name="pac_images" Type="varchar(max)" Nullable="false" />
+          <Property Name="pac_price" Type="int" Nullable="false" />
+          <Property Name="pac_discount" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tb_rating">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_comment" Type="varchar" MaxLength="1000" />
+          <Property Name="r_rating" Type="int" />
+          <Property Name="r_user_id_foreign_key" Type="int" Nullable="false" />
+          <Property Name="r_pro_id_foreign_key" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_resorts">
+          <Key>
+            <PropertyRef Name="reso_id" />
+          </Key>
+          <Property Name="reso_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reso_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="reso_description_1" Type="varchar(max)" Nullable="false" />
+          <Property Name="reso_images" Type="varchar(max)" Nullable="false" />
+          <Property Name="reso_price" Type="int" Nullable="false" />
+          <Property Name="reso_rating" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_restaurant">
+          <Key>
+            <PropertyRef Name="rest_id" />
+          </Key>
+          <Property Name="rest_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rest_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="rest_description_1" Type="varchar(max)" Nullable="false" />
+          <Property Name="rest_images" Type="varchar(max)" Nullable="false" />
+          <Property Name="rest_price" Type="int" Nullable="false" />
+          <Property Name="rest_rating" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_tour">
+          <Key>
+            <PropertyRef Name="to_id" />
+          </Key>
+          <Property Name="to_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="to_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="to_description_1" Type="varchar(max)" Nullable="false" />
+          <Property Name="to_images" Type="varchar(max)" Nullable="false" />
+          <Property Name="to_price" Type="int" Nullable="false" />
+          <Property Name="to_discount" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tb_transportation">
+          <Key>
+            <PropertyRef Name="tr_id" />
+          </Key>
+          <Property Name="tr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tr_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tr_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="tr_images" Type="varchar(max)" Nullable="false" />
+          <Property Name="tr_discount" Type="varchar" MaxLength="10" />
+          <Property Name="tr_price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_user">
+          <Key>
+            <PropertyRef Name="u_tb" />
+          </Key>
+          <Property Name="u_tb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_contact" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="u_city" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Karnel_Travel_GuideModelStoreContainer">
+          <EntitySet Name="tb_admin" EntityType="Self.tb_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_category" EntityType="Self.tb_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_feedback" EntityType="Self.tb_feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_hotels" EntityType="Self.tb_hotels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_orders" EntityType="Self.tb_orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_packages" EntityType="Self.tb_packages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_rating" EntityType="Self.tb_rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_resorts" EntityType="Self.tb_resorts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_restaurant" EntityType="Self.tb_restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_tour" EntityType="Self.tb_tour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_transportation" EntityType="Self.tb_transportation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_user" EntityType="Self.tb_user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Karnel_Travel_GuideModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ad_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_category">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_feedback">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="f_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="f_user_id_foreign_key" Type="Int32" />
+          <Property Name="f_pro_id_foreign_key" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_hotels">
+          <Key>
+            <PropertyRef Name="h_id" />
+          </Key>
+          <Property Name="h_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="h_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_description_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_price" Type="Int32" Nullable="false" />
+          <Property Name="h_rating" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_orders">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="o_items" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="o_foreign_key" Type="Int32" />
+          <Property Name="o_date" Type="DateTime" Precision="7" />
+          <Property Name="o_total" Type="Int32" />
+          <Property Name="o_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="o_payment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="o_billing_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="o_billing_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="o_quantity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_packages">
+          <Key>
+            <PropertyRef Name="pac_id" />
+          </Key>
+          <Property Name="pac_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pac_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pac_description_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pac_images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pac_price" Type="Int32" Nullable="false" />
+          <Property Name="pac_discount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_rating">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="r_comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="r_rating" Type="Int32" />
+          <Property Name="r_user_id_foreign_key" Type="Int32" Nullable="false" />
+          <Property Name="r_pro_id_foreign_key" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_resorts">
+          <Key>
+            <PropertyRef Name="reso_id" />
+          </Key>
+          <Property Name="reso_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reso_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reso_description_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reso_images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reso_price" Type="Int32" Nullable="false" />
+          <Property Name="reso_rating" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_restaurant">
+          <Key>
+            <PropertyRef Name="rest_id" />
+          </Key>
+          <Property Name="rest_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rest_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rest_description_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rest_images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rest_price" Type="Int32" Nullable="false" />
+          <Property Name="rest_rating" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_tour">
+          <Key>
+            <PropertyRef Name="to_id" />
+          </Key>
+          <Property Name="to_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="to_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="to_description_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="to_images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="to_price" Type="Int32" Nullable="false" />
+          <Property Name="to_discount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_transportation">
+          <Key>
+            <PropertyRef Name="tr_id" />
+          </Key>
+          <Property Name="tr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tr_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tr_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tr_images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tr_discount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tr_price" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_user">
+          <Key>
+            <PropertyRef Name="u_tb" />
+          </Key>
+          <Property Name="u_tb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Karnel_Travel_GuideEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_admin" EntityType="Self.tb_admin" />
+          <EntitySet Name="tb_category" EntityType="Self.tb_category" />
+          <EntitySet Name="tb_feedback" EntityType="Self.tb_feedback" />
+          <EntitySet Name="tb_hotels" EntityType="Self.tb_hotels" />
+          <EntitySet Name="tb_orders" EntityType="Self.tb_orders" />
+          <EntitySet Name="tb_packages" EntityType="Self.tb_packages" />
+          <EntitySet Name="tb_rating" EntityType="Self.tb_rating" />
+          <EntitySet Name="tb_resorts" EntityType="Self.tb_resorts" />
+          <EntitySet Name="tb_restaurant" EntityType="Self.tb_restaurant" />
+          <EntitySet Name="tb_tour" EntityType="Self.tb_tour" />
+          <EntitySet Name="tb_transportation" EntityType="Self.tb_transportation" />
+          <EntitySet Name="tb_user" EntityType="Self.tb_user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Karnel_Travel_GuideModelStoreContainer" CdmEntityContainer="Karnel_Travel_GuideEntities">
+          <EntitySetMapping Name="tb_admin">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_admin">
+              <MappingFragment StoreEntitySet="tb_admin">
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="ad_name" ColumnName="ad_name" />
+                <ScalarProperty Name="ad_email" ColumnName="ad_email" />
+                <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_category">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_category">
+              <MappingFragment StoreEntitySet="tb_category">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_feedback">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_feedback">
+              <MappingFragment StoreEntitySet="tb_feedback">
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="f_comment" ColumnName="f_comment" />
+                <ScalarProperty Name="f_user_id_foreign_key" ColumnName="f_user_id_foreign_key" />
+                <ScalarProperty Name="f_pro_id_foreign_key" ColumnName="f_pro_id_foreign_key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_hotels">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_hotels">
+              <MappingFragment StoreEntitySet="tb_hotels">
+                <ScalarProperty Name="h_id" ColumnName="h_id" />
+                <ScalarProperty Name="h_name" ColumnName="h_name" />
+                <ScalarProperty Name="h_description_1" ColumnName="h_description_1" />
+                <ScalarProperty Name="h_images" ColumnName="h_images" />
+                <ScalarProperty Name="h_price" ColumnName="h_price" />
+                <ScalarProperty Name="h_rating" ColumnName="h_rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_orders">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_orders">
+              <MappingFragment StoreEntitySet="tb_orders">
+                <ScalarProperty Name="o_id" ColumnName="o_id" />
+                <ScalarProperty Name="o_items" ColumnName="o_items" />
+                <ScalarProperty Name="o_foreign_key" ColumnName="o_foreign_key" />
+                <ScalarProperty Name="o_date" ColumnName="o_date" />
+                <ScalarProperty Name="o_total" ColumnName="o_total" />
+                <ScalarProperty Name="o_status" ColumnName="o_status" />
+                <ScalarProperty Name="o_payment" ColumnName="o_payment" />
+                <ScalarProperty Name="o_billing_city" ColumnName="o_billing_city" />
+                <ScalarProperty Name="o_billing_name" ColumnName="o_billing_name" />
+                <ScalarProperty Name="o_quantity" ColumnName="o_quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_packages">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_packages">
+              <MappingFragment StoreEntitySet="tb_packages">
+                <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+                <ScalarProperty Name="pac_name" ColumnName="pac_name" />
+                <ScalarProperty Name="pac_description_1" ColumnName="pac_description_1" />
+                <ScalarProperty Name="pac_images" ColumnName="pac_images" />
+                <ScalarProperty Name="pac_price" ColumnName="pac_price" />
+                <ScalarProperty Name="pac_discount" ColumnName="pac_discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_rating">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_rating">
+              <MappingFragment StoreEntitySet="tb_rating">
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+                <ScalarProperty Name="r_comment" ColumnName="r_comment" />
+                <ScalarProperty Name="r_rating" ColumnName="r_rating" />
+                <ScalarProperty Name="r_user_id_foreign_key" ColumnName="r_user_id_foreign_key" />
+                <ScalarProperty Name="r_pro_id_foreign_key" ColumnName="r_pro_id_foreign_key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_resorts">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_resorts">
+              <MappingFragment StoreEntitySet="tb_resorts">
+                <ScalarProperty Name="reso_id" ColumnName="reso_id" />
+                <ScalarProperty Name="reso_name" ColumnName="reso_name" />
+                <ScalarProperty Name="reso_description_1" ColumnName="reso_description_1" />
+                <ScalarProperty Name="reso_images" ColumnName="reso_images" />
+                <ScalarProperty Name="reso_price" ColumnName="reso_price" />
+                <ScalarProperty Name="reso_rating" ColumnName="reso_rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_restaurant">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_restaurant">
+              <MappingFragment StoreEntitySet="tb_restaurant">
+                <ScalarProperty Name="rest_id" ColumnName="rest_id" />
+                <ScalarProperty Name="rest_name" ColumnName="rest_name" />
+                <ScalarProperty Name="rest_description_1" ColumnName="rest_description_1" />
+                <ScalarProperty Name="rest_images" ColumnName="rest_images" />
+                <ScalarProperty Name="rest_price" ColumnName="rest_price" />
+                <ScalarProperty Name="rest_rating" ColumnName="rest_rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tour">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_tour">
+              <MappingFragment StoreEntitySet="tb_tour">
+                <ScalarProperty Name="to_id" ColumnName="to_id" />
+                <ScalarProperty Name="to_name" ColumnName="to_name" />
+                <ScalarProperty Name="to_description_1" ColumnName="to_description_1" />
+                <ScalarProperty Name="to_images" ColumnName="to_images" />
+                <ScalarProperty Name="to_price" ColumnName="to_price" />
+                <ScalarProperty Name="to_discount" ColumnName="to_discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_transportation">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_transportation">
+              <MappingFragment StoreEntitySet="tb_transportation">
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="tr_name" ColumnName="tr_name" />
+                <ScalarProperty Name="tr_description" ColumnName="tr_description" />
+                <ScalarProperty Name="tr_images" ColumnName="tr_images" />
+                <ScalarProperty Name="tr_discount" ColumnName="tr_discount" />
+                <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_user">
+            <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_user">
+              <MappingFragment StoreEntitySet="tb_user">
+                <ScalarProperty Name="u_tb" ColumnName="u_tb" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="u_contact" ColumnName="u_contact" />
+                <ScalarProperty Name="u_address" ColumnName="u_address" />
+                <ScalarProperty Name="u_city" ColumnName="u_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,445 @@
+﻿@model Karnel_Travel_Guide.ViewModel.ProductViewModel
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+<script>
+
+    
+
+    
+
+    $(".n").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#popular1").offset().top
+        },
+            'slow');
+    });
+
+    $(".n1").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu1").offset().top
+        },
+            'slow');
+    });
+
+    $(".n2").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu2").offset().top
+        },
+            'slow');
+    });
+
+    $(".n3").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu3").offset().top
+        },
+            'slow');
+    });
+
+    $(".n4").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu4").offset().top
+        },
+            'slow');
+    });
+
+    $(".n5").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu5").offset().top
+        },
+            'slow');
+    });
+
+    $(".n6").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#menu6").offset().top
+        },
+            'slow');
+    });
+
+    $(document).ready(function () {
+        $(".delete").click(function () {
+
+
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.post("/Admin/Product_delete", { id: $(this).attr("data-id") }, function (data) {
+                    $('#admin_container').html(data);
+
+                });
+
+
+            }
+        })
+
+
+
+        });
+    });
+
+    $(document).ready(function () {
+        $(".edit1").click(function () {
+            $.ajax({
+                url: "/Admin/Edittr",
+                data: {
+                    id: $(this).attr("data-id")
+                },
+
+            })
+                .done(function (result) {
+                    $('#admin_container').html(result);
+                })
+        });
+    });
+
+        $(document).ready(function () {
+            $(".edit2").click(function () {
+                $.ajax({
+                    url: "/Admin/Editrest",
+                    data: {
+                        id: $(this).attr("data-id")
+                    },
+
+                })
+                    .done(function (result) {
+                        $('#admin_container').html(result);
+                    })
+            });
+        });
+
+            $(document).ready(function () {
+                $(".edit3").click(function () {
+                    $.ajax({
+                        url: "/Admin/Editpac",
+                        data: {
+                            id: $(this).attr("data-id")
+                        },
+
+                    })
+                        .done(function (result) {
+                            $('#admin_container').html(result);
+                        })
+                });
+            });
+
+                $(document).ready(function () {
+                    $(".edit4").click(function () {
+                        $.ajax({
+                            url: "/Admin/Editreso",
+                            data: {
+                                id: $(this).attr("data-id")
+                            },
+
+                        })
+                            .done(function (result) {
+                                $('#admin_container').html(result);
+                            })
+                    });
+                });
+
+                    $(document).ready(function () {
+                        $(".edit5").click(function () {
+                            $.ajax({
+                                url: "/Admin/Edith",
+                                data: {
+                                    id: $(this).attr("data-id")
+                                },
+
+                            })
+                                .done(function (result) {
+                                    $('#admin_container').html(result);
+                                })
+                        });
+                    });
+
+                        $(document).ready(function () {
+                            $(".edit6").click(function () {
+                                $.ajax({
+                                    url: "/Admin/Editac",
+                                    data: {
+                                        id: $(this).attr("data-id")
+                                    },
+
+                                })
+                                    .done(function (result) {
+                                        $('#admin_container').html(result);
+                                    })
+                            });
+                        });
+
+    $(".edit").click(function () {
+        $.ajax({
+            url: "/Admin/Editto",
+            data: {
+                id: $(this).attr("data-id")
+            },
+
+        })
+            .done(function (result) {
+                $('#admin_container').html(result);
+            })
+    })
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+</script>
+
+
+<style>
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+    
+</style>
+
+
+
+
+
+<div class="bs-example">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item n"><a class="active rounded-0 nav-link border-dark text-uppercase text-dark" href="#popular1" data-toggle="tab">Tours</a></li>
+        <li class="nav-item n1"><a href="#menu1" class="nav-link rounded-0 border-dark text-uppercase  text-dark" data-toggle="tab">Transportation</a></li>
+        <li class="nav-item n2"><a href="#menu2" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Restaurant</a></li>
+        <li class="nav-item n3"><a href="#menu3" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Packages</a></li>
+        <li class="nav-item n4"><a href="#menu4" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Resorts</a></li>
+        <li class="nav-item n5"><a href="#menu5" class="nav-link rounded-0 border-dark text-uppercase text-dark" data-toggle="tab">Hotels</a></li>
+    </ul>
+
+    <div class="tabs-content">
+        <div class="tab-pane fade show in active" id="popular1">
+            <h5 class="text-uppercase p-2 text-center">List of Tours</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Tours.FirstOrDefault().to_id)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Tours.FirstOrDefault().to_name)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Tours.FirstOrDefault().to_images)  </th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Tours.FirstOrDefault().to_price)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Tb_Tours)
+                    {
+                        <tr>
+                            <td>@employee.to_id</td>
+                            <td>@employee.to_name</td>
+                            <td><img src="@Url.Content(employee.to_images)" alt="No Image Found" width="100px" height="60px" /></td>
+                            <td>@employee.to_price</td>
+                            <td>
+                                <i class="fa fa-trash text-danger fa-lg delete mt-1" data-id="@employee.to_id"></i>
+                                <i class="fa fa-edit text-success edit fa-lg ml-3 mt-1" data-id="@employee.to_id"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="menu1">
+            <h5 class="text-uppercase p-2 text-center">List of Transportation</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Transportations.FirstOrDefault().tr_id)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Transportations.FirstOrDefault().tr_name)</th>
+
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Transportations.FirstOrDefault().tr_images)  </th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Transportations.FirstOrDefault().tr_price)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Tb_Transportations)
+                    {
+                    <tr>
+                        <td>@employee.tr_id</td>
+                        <td>@employee.tr_name</td>
+                        <td><img src="@Url.Content(employee.tr_images)" alt="No Image Found" width="100px" height="60px" /></td>
+                        <td>@employee.tr_price</td>
+                        <td>
+                            <i class="fa fa-trash text-danger fa-lg delete mt-1" data-id="@employee.tr_id"></i>
+                            <i class="fa fa-edit text-success edit1 fa-lg ml-3 mt-1" data-id="@employee.tr_id"></i>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="menu2">
+            <h5 class="text-uppercase p-2 text-center">List of Restaurants</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Restaurants.FirstOrDefault().rest_id)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Restaurants.FirstOrDefault().rest_name)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Restaurants.FirstOrDefault().rest_images)  </th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Restaurants.FirstOrDefault().rest_price)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Tb_Restaurants)
+                    {
+                    <tr>
+                        <td>@employee.rest_id</td>
+                        <td>@employee.rest_name</td>
+                        <td><img src="@Url.Content(employee.rest_images)" alt="No Image Found" width="100px" height="60px" /></td>
+                        <td>@employee.rest_price</td>
+                        <td>
+                            <i class="fa fa-trash text-danger fa-lg delete mt-1" data-id="@employee.rest_id"></i>
+                            <i class="fa fa-edit text-success edit2 fa-lg ml-3 mt-1" data-id="@employee.rest_id"></i>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade p-0" id="menu3">
+            <h5 class="text-uppercase p-2 text-center">List of Packages</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Packages.FirstOrDefault().pac_id)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Packages.FirstOrDefault().pac_name)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Packages.FirstOrDefault().pac_images)  </th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Packages.FirstOrDefault().pac_price)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Tb_Packages)
+                    {
+                    <tr>
+                        <td>@employee.pac_id</td>
+                        <td>@employee.pac_name</td>
+                        <td><img src="@Url.Content(employee.pac_images)" alt="No Image Found" width="100px" height="60px" /></td>
+                        <td>@employee.pac_price</td>
+                        <td>
+                            <i class="fa fa-trash text-danger fa-lg delete mt-1" data-id="@employee.pac_id"></i>
+                            <i class="fa fa-edit text-success edit3 fa-lg ml-3 mt-1" data-id="@employee.pac_id"></i>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade p-0" id="menu4">
+            <h5 class="text-uppercase p-2 text-center">List of Resorts</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Resorts.FirstOrDefault().reso_id)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Resorts.FirstOrDefault().reso_name)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Resorts.FirstOrDefault().reso_images)  </th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Resorts.FirstOrDefault().reso_price)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Tb_Resorts)
+                    {
+                    <tr>
+                        <td>@employee.reso_id</td>
+                        <td>@employee.reso_name</td>
+                        <td><img src="@Url.Content(employee.reso_images)" alt="No Image Found" width="100px" height="60px" /></td>
+                        <td>@employee.reso_price</td>
+                        <td>
+                            <i class="fa fa-trash text-danger fa-lg delete mt-1" data-id="@employee.reso_id"></i>
+                            <i class="fa fa-edit text-success edit4 fa-lg ml-3 mt-1" data-id="@employee.reso_id"></i>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade p-0" id="menu5">
+            <h5 class="text-uppercase p-2 text-center">List of Hotels</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Hotels.FirstOrDefault().h_id)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Hotels.FirstOrDefault().h_name)</th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Hotels.FirstOrDefault().h_images)  </th>
+                        <th>@Html.DisplayNameFor(m => Model.Tb_Hotels.FirstOrDefault().h_price)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Tb_Hotels)
+                    {
+                    <tr>
+                        <td>@employee.h_id</td>
+                        <td>@employee.h_name</td>
+                        <td><img src="@Url.Content(employee.h_images)" alt="No Image Found" width="100px" height="60px" /></td>
+                        <td>@employee.h_price</td>
+                        <td>
+                            <i class="fa fa-trash text-danger fa-lg delete mt-1" data-id="@employee.h_id"></i>
+                            <i class="fa fa-edit text-success edit5 fa-lg ml-3 mt-1" data-id="@employee.h_id"></i>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

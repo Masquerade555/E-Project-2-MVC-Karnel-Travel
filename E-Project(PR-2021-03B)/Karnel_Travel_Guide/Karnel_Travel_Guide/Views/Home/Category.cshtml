@@ -1,0 +1,290 @@
+﻿@model Karnel_Travel_Guide.Models.Pro
+@using Karnel_Travel_Guide.Models;
+
+@{
+
+    ViewBag.Title = "Category";
+    var t = (Model.Tb_Transportations.Count() + Model.Tb_Tours.Count() + Model.Tb_Restaurants.Count() +
+            Model.Tb_Resorts.Count() + Model.Tb_Packages.Count() + Model.Tb_Hotels.Count());
+}
+
+
+
+@if (t > 0)
+{
+
+    <!-- PRODUCT NEW -->
+    <section class="flat-row row-product-new mb-5" id="feat">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-section margin-bottom-52">
+                        <h2 class="title">
+                            Products
+                        </h2>
+                    </div>
+                    <div class="product-content product-fourcolumn clearfix">
+                        <ul class="product style2 clearfix">
+
+                            @foreach (var item in Model.Tb_Transportations)
+                            {
+
+
+                                <li class="product-item mb-5">
+                                    <div class="product-thumb clearfix">
+                                        <a href="/Home/P_V_tr/@item.tr_id" class="product-thumb">
+                                            <img src="@Url.Content(item.tr_images)" width="90%" alt="image" style="height: 180px !important;">
+                                        </a>
+                                        <span class="new">New</span>
+                                    </div>
+                                    <div class="product-info text-center clearfix mt-3">
+                                        <span class="product-title">@item.tr_name</span>
+                                        <div class="price">
+                                            <ins>
+                                                <span class="amount">Rs @item.tr_price /-</span>
+                                            </ins>
+                                        </div>
+                                        <div class="flat-star style-1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="add-to-cart text-center">
+                                        @if (Session["u_id"] == null)
+                                        {
+                                            <a>ADD TO CART</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="Add" data-id="@item.tr_id">ADD TO CART</a>
+                                        }
+                                    </div>
+                                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                </li>
+
+                            }
+                            @foreach (var item in Model.Tb_Tours)
+                            {
+
+
+                                <li class="product-item mb-5">
+                                    <div class="product-thumb clearfix">
+                                        <a href="/Home/P_V_to/@item.to_id" class="product-thumb">
+                                            <img src="@Url.Content(item.to_images)" width="90%" alt="image" style="height: 180px !important;">
+                                        </a>
+                                        <span class="new">New</span>
+                                    </div>
+                                    <div class="product-info text-center clearfix mt-3">
+                                        <span class="product-title">@item.to_name</span>
+                                        <div class="price">
+                                            <ins>
+                                                <span class="amount">Rs @item.to_price /-</span>
+                                            </ins>
+                                        </div>
+                                        <div class="flat-star style-1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="add-to-cart text-center">
+                                        @if (Session["u_id"] == null)
+                                        {
+                                            <a>ADD TO CART</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="Add" data-id="@item.to_id">ADD TO CART</a>
+                                        }
+                                    </div>
+                                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                </li>
+
+                            }
+                            @foreach (var item in Model.Tb_Restaurants)
+                            {
+
+
+                                <li class="product-item mb-5">
+                                    <div class="product-thumb clearfix">
+                                        <a href="/Home/P_V_rest/@item.rest_id" class="product-thumb">
+                                            <img src="@Url.Content(item.rest_images)" width="90%" alt="image" style="height: 180px !important;">
+                                        </a>
+                                        <span class="new">New</span>
+                                    </div>
+                                    <div class="product-info text-center clearfix mt-3">
+                                        <span class="product-title">@item.rest_name</span>
+                                        <div class="price">
+                                            <ins>
+                                                <span class="amount">Rs @item.rest_price /-</span>
+                                            </ins>
+                                        </div>
+                                        <div class="flat-star style-1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="add-to-cart text-center">
+                                        @if (Session["u_id"] == null)
+                                        {
+                                            <a>ADD TO CART</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="Add" data-id="@item.rest_id">ADD TO CART</a>
+                                        }
+                                    </div>
+                                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                </li>
+
+                            }
+                            @foreach (var item in Model.Tb_Resorts)
+                            {
+
+
+                                <li class="product-item mb-5">
+                                    <div class="product-thumb clearfix">
+                                        <a href="/Home/P_V_reso/@item.reso_id" class="product-thumb">
+                                            <img src="@Url.Content(item.reso_images)" width="90%" alt="image" style="height: 180px !important;">
+                                        </a>
+                                        <span class="new">New</span>
+                                    </div>
+                                    <div class="product-info text-center clearfix mt-3">
+                                        <span class="product-title">@item.reso_name</span>
+                                        <div class="price">
+                                            <ins>
+                                                <span class="amount">Rs @item.reso_price /-</span>
+                                            </ins>
+                                        </div>
+                                        <div class="flat-star style-1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="add-to-cart text-center">
+                                        @if (Session["u_id"] == null)
+                                        {
+                                            <a>ADD TO CART</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="Add" data-id="@item.reso_id">ADD TO CART</a>
+                                        }
+                                    </div>
+                                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                </li>
+
+                            }
+                            @foreach (var item in Model.Tb_Packages)
+                            {
+
+
+                                <li class="product-item mb-5">
+                                    <div class="product-thumb clearfix">
+                                        <a href="/Home/P_V_pac/@item.pac_id" class="product-thumb">
+                                            <img src="@Url.Content(item.pac_images)" width="90%" alt="image" style="height: 180px !important;">
+                                        </a>
+                                        <span class="new">New</span>
+                                    </div>
+                                    <div class="product-info text-center clearfix mt-3">
+                                        <span class="product-title">@item.pac_name</span>
+                                        <div class="price">
+                                            <ins>
+                                                <span class="amount">Rs @item.pac_price /-</span>
+                                            </ins>
+                                        </div>
+                                        <div class="flat-star style-1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="add-to-cart text-center">
+                                        @if (Session["u_id"] == null)
+                                        {
+                                            <a>ADD TO CART</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="Add" data-id="@item.pac_id">ADD TO CART</a>
+                                        }
+                                    </div>
+                                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                </li>
+
+                            }
+                            @foreach (var item in Model.Tb_Hotels)
+                            {
+
+
+                                <li class="product-item mb-5">
+                                    <div class="product-thumb clearfix">
+                                        <a href="/Home/P_V_h/@item.h_id" class="product-thumb">
+                                            <img src="@Url.Content(item.h_images)" width="90%" alt="image" style="height: 180px !important;">
+                                        </a>
+                                        <span class="new">New</span>
+                                    </div>
+                                    <div class="product-info text-center clearfix mt-3">
+                                        <span class="product-title">@item.h_name</span>
+                                        <div class="price">
+                                            <ins>
+                                                <span class="amount">Rs @item.h_price /-</span>
+                                            </ins>
+                                        </div>
+                                        <div class="flat-star style-1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="add-to-cart text-center">
+                                        @if (Session["u_id"] == null)
+                                        {
+                                            <a>ADD TO CART</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="Add" data-id="@item.h_id">ADD TO CART</a>
+                                        }
+                                    </div>
+                                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                </li>
+
+                            }
+                            
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <!-- END PRODUCT NEW -->
+}
+else
+{
+    <h5 class="mt-5 text-center font-weight-bold">Oops!</h5>
+    <h3 class="mt-5 mb-5 text-center">Products Not Found.</h3>
+}

@@ -1,0 +1,101 @@
+﻿
+@using Karnel_Travel_Guide.Models;
+
+@{
+    /**/
+    Karnel_Travel_GuideEntities db = new Karnel_Travel_GuideEntities();
+
+    ViewBag.Title = "Buy_Now";
+
+
+
+}
+
+
+<h2>@ViewBag.price</h2>
+
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <img src="@Url.Content(Model.tr_image)" alt="Alternate Text" width="100%" height="455px" />
+                    <h3>@Model.tr_name</h3>
+                    <b>Rs @Model.tr_price /-</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <img src="@Url.Content(Model.to_image)" alt="Alternate Text" width="100%" height="455px" />
+                    <h3>@Model.to_name</h3>
+                    <b>Rs @Model.to_price /-</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <img src="@Url.Content(Model.rest_image)" alt="Alternate Text" width="100%" height="455px" />
+                    <h3>@Model.rest_name</h3>
+                    <b>Rs @Model.rest_price /-</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <img src="@Url.Content(Model.reso_image)" alt="Alternate Text" width="100%" height="455px" />
+                    <h3>@Model.reso_name</h3>
+                    <b>Rs @Model.reso_price /-</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <img src="@Url.Content(Model.pac_image)" alt="Alternate Text" width="100%" height="455px" />
+                    <h3>@Model.pac_name</h3>
+                    <b>Rs @Model.pac_price /-</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <img src="@Url.Content(Model.h_image)" alt="Alternate Text" width="100%" height="455px" />
+                    <h3>@Model.h_name</h3>
+                    <b>Rs @Model.h_price /-</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

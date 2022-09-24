@@ -1,0 +1,339 @@
+﻿
+@using Karnel_Travel_Guide.Models;
+@{
+
+    var Data1 = (IEnumerable<tb_transportation>)TempData["MyList1"];
+    var Data2 = (IEnumerable<tb_tour>)TempData["MyList2"];
+    var Data3 = (IEnumerable<tb_packages>)TempData["MyList3"];
+
+
+
+}
+
+
+<!-- PRODUCT NEW -->
+<section class="flat-row row-product-new mb-5" id="feat">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-section margin-bottom-52">
+                    <h2 class="title">
+                        Discount Products
+                    </h2>
+                </div>
+                <div class="product-content product-fourcolumn clearfix">
+                    <ul class="product style2 clearfix">
+
+                        @foreach (var item in Data1.Take(1))
+                        {
+
+
+                            <li class="product-item mb-5">
+                                <div class="product-thumb clearfix">
+                                    <a href="/Home/P_V_tr/@item.tr_id " class="product-thumb">
+                                        <img src="@Url.Content(item.tr_images)" width="90%" alt="image" style="height: 180px !important;">
+                                    </a>
+                                    <span class="new">Discount</span>
+                                </div>
+                                <div class="product-info text-center clearfix mt-3">
+                                    <span class="product-title">@item.tr_name</span>
+                                    <div class="price">
+                                        <ins>
+                                            <span class="amount">Rs @item.tr_price /-</span>
+                                        </ins>
+                                    </div>
+                                    <div class="flat-star style-1">
+                                        @{
+                                            Karnel_Travel_GuideEntities db = new Karnel_Travel_GuideEntities();
+                                            var data = db.tb_rating.Where(x => x.r_pro_id_foreign_key == item.tr_id).ToList();
+                                            double i = Convert.ToDouble(data.Sum(x => x.r_rating));
+                                            double c = data.Count();
+
+                                            double total_rating = i / c;
+                                            double per = total_rating / 5 * 100;
+
+                                            if (per > 0 && per <= 20)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 20 && per <= 40)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 40 && per <= 60)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 60 || per <= 80)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 80 && per <= 100)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star "></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+
+                                        }
+                                    </div>
+                                    
+
+                                </div>
+
+                                <div class="add-to-cart text-center">
+                                    @if (Session["u_id"] == null)
+                                    {
+                                        <a>ADD TO CART</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Add"  data-id="@item.tr_id">ADD TO CART</a>
+                                    }
+
+                                </div>
+
+                               
+
+                            </li>
+
+                        }
+
+                        @foreach (var item in Data2.Take(1))
+                        {
+
+
+                            <li class="product-item mb-5">
+                                <div class="product-thumb clearfix">
+                                    <a href="/Home/P_V_to/@item.to_id " class="product-thumb">
+                                        <img src="@Url.Content(item.to_images)" width="90%" alt="image" style="height: 180px !important;">
+                                    </a>
+                                    <span class="new">Discount</span>
+                                </div>
+                                <div class="product-info text-center clearfix mt-3">
+                                    <span class="product-title">@item.to_name</span>
+                                    <div class="price">
+                                        <ins>
+                                            <span class="amount">Rs @item.to_price /-</span>
+                                        </ins>
+                                    </div>
+                                    <div class="flat-star style-1">
+                                        @{
+                                            Karnel_Travel_GuideEntities db = new Karnel_Travel_GuideEntities();
+                                            var data = db.tb_rating.Where(x => x.r_pro_id_foreign_key == item.to_id).ToList();
+                                            double i = Convert.ToDouble(data.Sum(x => x.r_rating));
+                                            double c = data.Count();
+
+                                            double total_rating = i / c;
+                                            double per = total_rating / 5 * 100;
+
+                                            if (per > 0 && per <= 20)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 20 && per <= 40)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 40 && per <= 60)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 60 || per <= 80)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 80 && per <= 100)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star "></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+
+                                        }
+                                    </div>
+                                   
+
+                                </div>
+
+                                <div class="add-to-cart text-center">
+                                    @if (Session["u_id"] == null)
+                                    {
+                                        <a>ADD TO CART</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Add" data-id="@item.to_id">ADD TO CART</a>
+                                    }
+
+                                </div>
+
+                              
+
+                            </li>
+
+                        }
+
+                        @foreach (var item in Data3.Take(2))
+                        {
+
+
+                            <li class="product-item mb-5">
+                                <div class="product-thumb clearfix">
+                                    <a href="/Home/P_V_pac/@item.pac_id " class="product-thumb">
+                                        <img src="@Url.Content(item.pac_images)" width="90%" alt="image" style="height: 180px !important;">
+                                    </a>
+                                    <span class="new">Discount</span>
+                                </div>
+                                <div class="product-info text-center clearfix mt-3">
+                                    <span class="product-title">@item.pac_name</span>
+                                    <div class="price">
+                                        <ins>
+                                            <span class="amount">Rs @item.pac_price /-</span>
+                                        </ins>
+                                    </div>
+                                    <div class="flat-star style-1">
+                                        @{
+                                            Karnel_Travel_GuideEntities db = new Karnel_Travel_GuideEntities();
+                                            var data = db.tb_rating.Where(x => x.r_pro_id_foreign_key == item.pac_id).ToList();
+                                            double i = Convert.ToDouble(data.Sum(x => x.r_rating));
+                                            double c = data.Count();
+
+                                            double total_rating = i / c;
+                                            double per = total_rating / 5 * 100;
+
+                                            if (per > 0 && per <= 20)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 20 && per <= 40)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 40 && per <= 60)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 60 || per <= 80)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+                                            else if (per > 80 && per <= 100)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star "></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                            }
+
+                                        }
+                                    </div>
+                                   
+
+                                </div>
+
+                                <div class="add-to-cart text-center">
+                                    @if (Session["u_id"] == null)
+                                    {
+                                        <a>ADD TO CART</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Add" data-id="@item.pac_id">ADD TO CART</a>
+                                    }
+
+                                </div>
+
+                               
+
+                            </li>
+
+                        }
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+<!-- END PRODUCT NEW -->

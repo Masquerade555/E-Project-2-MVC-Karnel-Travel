@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Karnel_Travel_GuideModelStoreContainer" CdmEntityContainer="Karnel_Travel_GuideEntities">
+    <EntitySetMapping Name="tb_admin">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_admin">
+        <MappingFragment StoreEntitySet="tb_admin">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="ad_name" ColumnName="ad_name" />
+          <ScalarProperty Name="ad_email" ColumnName="ad_email" />
+          <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_category">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_category">
+        <MappingFragment StoreEntitySet="tb_category">
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_feedback">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_feedback">
+        <MappingFragment StoreEntitySet="tb_feedback">
+          <ScalarProperty Name="f_id" ColumnName="f_id" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="f_comment" ColumnName="f_comment" />
+          <ScalarProperty Name="f_user_id_foreign_key" ColumnName="f_user_id_foreign_key" />
+          <ScalarProperty Name="f_pro_id_foreign_key" ColumnName="f_pro_id_foreign_key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_hotels">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_hotels">
+        <MappingFragment StoreEntitySet="tb_hotels">
+          <ScalarProperty Name="h_id" ColumnName="h_id" />
+          <ScalarProperty Name="h_name" ColumnName="h_name" />
+          <ScalarProperty Name="h_description_1" ColumnName="h_description_1" />
+          <ScalarProperty Name="h_images" ColumnName="h_images" />
+          <ScalarProperty Name="h_price" ColumnName="h_price" />
+          <ScalarProperty Name="h_rating" ColumnName="h_rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_orders">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_orders">
+        <MappingFragment StoreEntitySet="tb_orders">
+          <ScalarProperty Name="o_id" ColumnName="o_id" />
+          <ScalarProperty Name="o_items" ColumnName="o_items" />
+          <ScalarProperty Name="o_foreign_key" ColumnName="o_foreign_key" />
+          <ScalarProperty Name="o_date" ColumnName="o_date" />
+          <ScalarProperty Name="o_total" ColumnName="o_total" />
+          <ScalarProperty Name="o_status" ColumnName="o_status" />
+          <ScalarProperty Name="o_payment" ColumnName="o_payment" />
+          <ScalarProperty Name="o_billing_city" ColumnName="o_billing_city" />
+          <ScalarProperty Name="o_billing_name" ColumnName="o_billing_name" />
+          <ScalarProperty Name="o_quantity" ColumnName="o_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_packages">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_packages">
+        <MappingFragment StoreEntitySet="tb_packages">
+          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+          <ScalarProperty Name="pac_name" ColumnName="pac_name" />
+          <ScalarProperty Name="pac_description_1" ColumnName="pac_description_1" />
+          <ScalarProperty Name="pac_images" ColumnName="pac_images" />
+          <ScalarProperty Name="pac_price" ColumnName="pac_price" />
+          <ScalarProperty Name="pac_discount" ColumnName="pac_discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_rating">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_rating">
+        <MappingFragment StoreEntitySet="tb_rating">
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+          <ScalarProperty Name="r_comment" ColumnName="r_comment" />
+          <ScalarProperty Name="r_rating" ColumnName="r_rating" />
+          <ScalarProperty Name="r_user_id_foreign_key" ColumnName="r_user_id_foreign_key" />
+          <ScalarProperty Name="r_pro_id_foreign_key" ColumnName="r_pro_id_foreign_key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_resorts">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_resorts">
+        <MappingFragment StoreEntitySet="tb_resorts">
+          <ScalarProperty Name="reso_id" ColumnName="reso_id" />
+          <ScalarProperty Name="reso_name" ColumnName="reso_name" />
+          <ScalarProperty Name="reso_description_1" ColumnName="reso_description_1" />
+          <ScalarProperty Name="reso_images" ColumnName="reso_images" />
+          <ScalarProperty Name="reso_price" ColumnName="reso_price" />
+          <ScalarProperty Name="reso_rating" ColumnName="reso_rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_restaurant">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_restaurant">
+        <MappingFragment StoreEntitySet="tb_restaurant">
+          <ScalarProperty Name="rest_id" ColumnName="rest_id" />
+          <ScalarProperty Name="rest_name" ColumnName="rest_name" />
+          <ScalarProperty Name="rest_description_1" ColumnName="rest_description_1" />
+          <ScalarProperty Name="rest_images" ColumnName="rest_images" />
+          <ScalarProperty Name="rest_price" ColumnName="rest_price" />
+          <ScalarProperty Name="rest_rating" ColumnName="rest_rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_tour">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_tour">
+        <MappingFragment StoreEntitySet="tb_tour">
+          <ScalarProperty Name="to_id" ColumnName="to_id" />
+          <ScalarProperty Name="to_name" ColumnName="to_name" />
+          <ScalarProperty Name="to_description_1" ColumnName="to_description_1" />
+          <ScalarProperty Name="to_images" ColumnName="to_images" />
+          <ScalarProperty Name="to_price" ColumnName="to_price" />
+          <ScalarProperty Name="to_discount" ColumnName="to_discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_transportation">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_transportation">
+        <MappingFragment StoreEntitySet="tb_transportation">
+          <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+          <ScalarProperty Name="tr_name" ColumnName="tr_name" />
+          <ScalarProperty Name="tr_description" ColumnName="tr_description" />
+          <ScalarProperty Name="tr_images" ColumnName="tr_images" />
+          <ScalarProperty Name="tr_discount" ColumnName="tr_discount" />
+          <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_user">
+      <EntityTypeMapping TypeName="Karnel_Travel_GuideModel.tb_user">
+        <MappingFragment StoreEntitySet="tb_user">
+          <ScalarProperty Name="u_tb" ColumnName="u_tb" />
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_password" ColumnName="u_password" />
+          <ScalarProperty Name="u_contact" ColumnName="u_contact" />
+          <ScalarProperty Name="u_address" ColumnName="u_address" />
+          <ScalarProperty Name="u_city" ColumnName="u_city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
